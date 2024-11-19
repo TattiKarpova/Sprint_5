@@ -25,5 +25,6 @@ class TestLocators:
     RECOVERY_FIELD = By.XPATH, ".//button[text() = 'Восстановить']"
     LOGIN_BUTTON_RECOVERY_PAGE = By.XPATH, ".//div/main/div/div/p/a[text() = 'Войти']"
     #CLIENTS_AREA
-    LOGOUT_BUTTON = By.XPATH,".//button[contains(text(), 'Выход')]"
+    LOGOUT_BUTTON = By.XPATH, ".//button[contains(text(), 'Выход')]"
+    EMAIL_FIELD = By.XPATH, ".//div/div/div/ul/li[2]/div/div/input"
 

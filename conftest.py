@@ -3,6 +3,7 @@ import string
 import random
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
+from date import BASE_URL
 
 from locators import TestLocators
 
@@ -33,10 +34,11 @@ def driver():
 
     driver = webdriver.Chrome(options=options)
     driver.implicitly_wait(10)  # Неявное ожидание элементов на странице
-    driver.get("https://stellarburgers.nomoreparties.site/")
+    driver.get(BASE_URL)
     yield driver
 
     driver.quit()
+
 
 
 

@@ -1,12 +1,15 @@
+import pytest
 from selenium.webdriver.common.by import By
 from selenium import webdriver
 from selenium.webdriver.support.wait import WebDriverWait
+import requests
 
 from conftest import driver
 from locators import TestLocators
 from conftest import generate_name, generate_password, generate_mail
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions
+
 
 class TestLogOut:
     def test_log_out(self, driver):
@@ -26,8 +29,21 @@ class TestLogOut:
         driver.find_element(*TestLocators.EMAIL_FIELD_LOGIN).send_keys(email)
         driver.find_element(*TestLocators.PASSWORD_FIELD_LOGIN).send_keys(password)
         driver.find_element(*TestLocators.LOGIN_BUTTON).click()
+
+        WebDriverWait(driver, 20).until(
+            expected_conditions.element_to_be_clickable((TestLocators.CLIENTS_AREA_BUTTON)))
+
         driver.find_element(*TestLocators.CLIENTS_AREA_BUTTON).click()
+
         driver.find_element(*TestLocators.LOGOUT_BUTTON).click()
+
+
+        response = requests.get("https://stellarburgers.nomoreparties.site/api/auth/logout")
+
+        # Проверяем статус ответа
+        assert response.status_code == 200
+
+
 
 
 
