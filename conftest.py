@@ -3,7 +3,7 @@ import string
 import random
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
-from date import BASE_URL
+from urls import BASE_URL
 
 from locators import TestLocators
 
